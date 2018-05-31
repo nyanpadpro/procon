@@ -2,16 +2,16 @@
 
 ## 動作環境はどうする？
 Schemeのいちばん人気な処理系はGaucheらしいのだけれど、WindowsだとインストールがめんどくさいしMacと環境を合わせるのもこれまた面倒なので、Paiza.ioでSchemeを選んで動作確認することにした。  
-ちなみにLispはたくさん別の人が作った実装が、この実装のことを”処理系”とよんでいる。
+ちなみにLispはたくさん（別の人が作った）実装があって、この実装のことを”処理系”とよんでいる。
 
 https://paiza.io/
 
 ## まず最初に何が出来ないとだめなんだ？
 プログラムコンテストは標準入力でパラメータを受け取り、標準出力でパラメータに対する処理結果を返すスタイルとなる。  
-つまり、まずはinputとprintを覚えるぞ。  
+つまり、まずはinputとprintを覚えることにした。
 
 Lispは処理系ごとに標準入出力を実装するようになっているため、ここではGaucheの命令を覚えなければならない。  
-Paiza.ioはGaucheなのだ。
+Paiza.ioの中身はGaucheなのだ。
 さっそくググって下記のコードを書いてみた。
 
 defineで関数mainを宣言してread-lineで標準入力を取得してprintで出力って感じだと思う。  
@@ -23,7 +23,7 @@ paiza.ioで実行するとちゃんと動く。
         0)
 
 
-次に標準入力をstring->numberにて文字列を数値に変換して掛ける２するコードを書いた  
+次に標準入力をstring->numberにて文字列を数値に変換してn×２するコードを書いた  
 これも正常に動作した。
 
     (define (main args) 
@@ -32,4 +32,23 @@ paiza.ioで実行するとちゃんと動く。
         0)
 
 
-<iframe src="https://paiza.io/projects/e/kLkDwFpFSS3EszbBFegAAQ?theme=twilight" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
+次にn回printするコードを書く。  
+よくわからないがSchemeにはCommon Lispのようなloopマクロすなわちfor文がないので再帰で書かなければならないらしい。  
+
+loop-printというテキトーなネーミングの関数を定義して再帰でカウントダウンしていくだけのコードを書いた。  
+再帰は終了条件を書かないと無限ループになるのでnが0未満になったときに0を返却するようにした。  
+Common Lisp知識だとifはtrueの場合とfalseの場合で一行しか式を書けなかったのでfalseにはbeginを入れて逐次実行するようにした。  
+
+    (define (loop-print n)
+        (if (< n 0)
+               0
+               (begin 
+                      (print n)
+                      (loop-print (- n 1)))
+        )
+    )
+    
+    (define (main args) 
+        (define n (string->number (read-line)))
+        (loop-print n)
+        0)
