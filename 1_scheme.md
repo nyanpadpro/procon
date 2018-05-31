@@ -15,6 +15,7 @@ Paiza.ioはGaucheなのだ。
 さっそくググって下記のコードを書いてみた。
 
     (define (main args) 
+        (print (read-line))
         0)
 
 defineで関数mainを宣言してread-lineで標準入力を取得してprintで出力って感じだと思う。
