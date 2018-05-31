@@ -23,7 +23,7 @@ paiza.ioで実行するとちゃんと動く。
         0)
 
 
-次にstring->numberにて文字列を数値に変換して掛ける２するコードを書いた  
+次に標準入力をstring->numberにて文字列を数値に変換して掛ける２するコードを書いた  
 これも正常に動作した。
 
     (define (main args) 
@@ -32,3 +32,4 @@ paiza.ioで実行するとちゃんと動く。
         0)
 
 
+<iframe src="https://paiza.io/projects/e/kLkDwFpFSS3EszbBFegAAQ?theme=twilight" width="100%" height="500" scrolling="no" seamless="seamless"></iframe>
