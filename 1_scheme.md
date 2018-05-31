@@ -12,4 +12,10 @@ https://paiza.io/
 
 Lispは処理系ごとに標準入出力を実装するようになっているため、ここではGaucheの命令を覚えなければならない。  
 Paiza.ioはGaucheなのだ。
+さっそくググって下記のコードを書いてみた。
+
+    (define (main args) 
+        0)
+
+defineで関数mainを宣言してread-lineで標準入力を取得してprintで出力って感じだと思う。
 
