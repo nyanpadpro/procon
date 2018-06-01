@@ -13,7 +13,7 @@ flagは交換が発生したらもう一度ループするよという意味に�
         flag = False
         for i in range(1, len(data)):
             if data[i-1] > data[i]:
-                data[i-1], data[i] = data[i], data[i-1]
+                data[i-1], data[i] = data[i], data[i-1] #こう書くとPythonではtempがいらないので便利
                 flag = True
     
     print(data)
